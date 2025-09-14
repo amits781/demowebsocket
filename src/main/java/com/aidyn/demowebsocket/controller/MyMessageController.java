@@ -19,4 +19,15 @@ public class MyMessageController {
         service.sendMessageToClient(name,"Hello");
         return "Sent";
     }
+
+    @GetMapping(value = "/metrics", produces = "text/plain")
+    public String metrics() {
+        int value = fetchValueFromHttp(); // your HTTP call
+        return "my_cost_http_metric " + value + "\n";
+    }
+
+    private int fetchValueFromHttp() {
+        // call your API and return some number
+        return 42;
+    }
 }
